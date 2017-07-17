@@ -2,6 +2,7 @@ class EnterCheckout{
 	/**
 	* Initates a new Enter instance from artist Id.
 	* @param {string} the Id of the artist for Enter.is
+	* @example enter = new EnterCheckout('5BzdSo4vrXQoYJnMw');
 	*/
 	constructor(artistId) {
 		this.artist = artistId;
