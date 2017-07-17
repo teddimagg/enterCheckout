@@ -2,7 +2,7 @@ class EnterCheckout{
 	/**
 	* Initates a new Enter instance from artist Id.
 	* @param {string} the Id of the artist for Enter.is
-	* @example enter = new EnterCheckout('5BzdSo4vrXQoYJnMw');
+	* @example const enter = new EnterCheckout('5BzdSo4vrXQoYJnMw');
 	*/
 	constructor(artistId) {
 		this.artist = artistId;
@@ -38,6 +38,8 @@ class EnterCheckout{
 	* This function returns a product from it's Id.
 	* @param {string} the Id of the product
 	* @returns {number} a product found from the input id
+	* @example 
+		let product = enter.productFromId( $(this).attr('product_id') );
 	*/
 	productFromId(id){
 		return this.products.find((product) => {
@@ -49,6 +51,8 @@ class EnterCheckout{
 	* This function sorts the products item.
 	* @param {string} field name to sort by.
 	* @param {string} [input="asc"] which order to sort by
+	* @example 
+		enter.sortProducts('price', 'desc');
 	*/
 	sortProducts(field, order){
 		this.products.sort((a, b) => {
@@ -58,6 +62,11 @@ class EnterCheckout{
 
 	/**
 	* This function moves the user to a secure checkout link on Enter.is
+	* @example
+		$('.checkoutbtn').click((e) => {
+			enter.checkout();
+			//Close the custom cart UI for example
+		});
 	*/
 	checkout() {
 		let props = ['id', 'size', 'color', 'quantity'];
@@ -86,6 +95,7 @@ class EnterCheckout{
 	/**
 	* This function calculates the total price of the cart.
 	* @returns {number} the total price of the cart.
+	* @example $('.carttotal').text(enter.cartTotal() + " kr.");
 	*/
 	cartTotal() {
 		return (this.cart.length) ? this.cart.map((product) => {
@@ -94,8 +104,18 @@ class EnterCheckout{
 	}
 
 	/**
-	* This function adds a product to cart
+	* This function adds a product to cart, the fields { id, size, color and quantity } are the only required one, but storing more data (such as image and price) can be useful.
 	* @param {Object} the product which is to be added to cart.
+	* @example 
+		enter.addToCart({
+			name:       product.name,
+			price:      product.price,
+			id:         product._id,
+			img: 		product.images[0],
+			size:       $('.sizesel').attr('data'),
+			color: 	    '-',
+			quantity:   $('.count option:selected').val()
+		});
 	*/
 	addToCart(product) {
 		let contains = false;
@@ -112,6 +132,12 @@ class EnterCheckout{
 	/**
 	* Manually updates cart object and the cart in local storage
 	* @param {[Object]} the new cart (array) of products to replace the current cart.
+	* @example enter.updateCart([{
+		id: '123',
+		size: 'L',
+		color: '-',
+		quantity: '2'
+	}]);
 	*/
 	updateCart(cart) {
 		this.cart = cart;
