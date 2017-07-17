@@ -133,11 +133,11 @@ class EnterCheckout{
 	* Manually updates cart object and the cart in local storage
 	* @param {[Object]} the new cart (array) of products to replace the current cart.
 	* @example enter.updateCart([{
-		id: '123',
-		size: 'L',
-		color: '-',
-		quantity: '2'
-	}]);
+	*	id: '123',
+	*	size: 'L',
+	*	color: '-',
+	*	quantity: '2'
+	* }]);
 	*/
 	updateCart(cart) {
 		this.cart = cart;
