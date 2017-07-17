@@ -11,6 +11,12 @@ class EnterCheckout{
 
 	/**
 	* Gathers product data from Enter.is
+	* @example 
+		enter.init().then((res) => {
+			//do stuff with products
+		}).catch((reason) => {
+			console.log(reason);
+		});
 	*/
 	init() {
 		return new Promise((resolve, reject) => {
