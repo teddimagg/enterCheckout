@@ -21,6 +21,16 @@ enter = new EnterCheckout('5BzdSo4vrXQoYJnMw');
 
 Gathers product data from Enter.is
 
+**Examples**
+
+```javascript
+enter.init().then((res) => {
+//do stuff with products
+}).catch((reason) => {
+console.log(reason);
+});
+```
+
 ## productFromId
 
 This function returns a product from it's Id.
